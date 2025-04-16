@@ -5,5 +5,6 @@
     Travel
     Gallery
     Wolayta History
+    Wolayta Culture
     Events
     Contact
