@@ -4,6 +4,6 @@
     Destinations
     Travel
     Gallery
-    Wolayta
+    Wolayta History
     Events
     Contact
