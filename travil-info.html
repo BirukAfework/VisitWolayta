@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Travel Information - Visit Wolayta</title>
+  <meta name="description" content="Get essential travel information for visiting the Wolayta Zone, including weather, communication, security, and more.">
+  <meta name="keywords" content="Wolayta, Ethiopia, travel information, weather, communication, security, visa">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      --heading-font: "Questrial", sans-serif;
+      --nav-font: "Noto Sans", sans-serif;
+      --background-color: #ffffff;
+      --default-color: #0a0f14;
+      --heading-color: #0f2943;
+      --accent-color: #ff5722;
+      --surface-color: #ffffff;
+      --contrast-color: #ffffff;
+      --nav-color: #0a0f14;
+      --nav-hover-color: #ff5722;
+      --nav-mobile-background-color: #ffffff;
+      --nav-dropdown-background-color: #ffffff;
+      --nav-dropdown-color: #0a0f14;
+      --nav-dropdown-hover-color: #ff5722;
+    }
+
+    body { 
+      color: var(--default-color); 
+      background-color: var(--background-color); 
+      font-family: var(--default-font); 
+      margin: 0; 
+      padding: 0; 
+    }
+    a { color: var(--accent-color); text-decoration: none; transition: 0.3s; }
+    a:hover { color: color-mix(in srgb, var(--accent-color), transparent 25%); }
+    h1, h2, h3, h4, h5, h6 { color: var(--heading-color); font-family: var(--heading-font); }
+
+    /* Header */
+    .header { 
+      padding: 20px 0; 
+      transition: all 0.5s; 
+      z-index: 997; 
+      position: fixed; 
+      top: 0; 
+      width: 100%; 
+      background: transparent; 
+    }
+    .header.sticky { 
+      background: rgba(255, 255, 255, 0.95); 
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
+    }
+    .header .header-container { 
+      background: rgba(255, 255, 255, 0.9); 
+      border-radius: 50px; 
+      padding: 5px 25px; 
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
+      max-width: 1200px; 
+      margin: 0 auto; 
+    }
+    .header .logo h1 { font-size: 24px; margin: 0; padding-left: 5px; font-weight: 500; color: var(--heading-color); }
+
+    /* Navigation Menu - Desktop */
+    @media (min-width: 1200px) {
+      .navmenu { padding: 0; }
+      .navmenu ul { margin: 0; padding: 0; display: flex; list-style: none; align-items: center; }
+      .navmenu li { position: relative; }
+      .navmenu a, .navmenu a:focus { 
+        color: var(--nav-color); 
+        padding: 18px 15px; 
+        font-size: 16px; 
+        font-family: var(--nav-font); 
+        font-weight: 400; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        white-space: nowrap; 
+        transition: 0.3s; 
+      }
+      .navmenu a i, .navmenu a:focus i { font-size: 12px; line-height: 0; margin-left: 5px; transition: 0.3s; }
+      .navmenu li:hover>a, .navmenu .active, .navmenu .active:focus { color: var(--nav-hover-color); }
+      .navmenu .dropdown ul { 
+        display: none; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        background-color: var(--nav-dropdown-background-color); 
+        padding: 10px 0; 
+        border-radius: 6px; 
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1); 
+      }
+      .navmenu .dropdown:hover > ul { display: block; }
+      .navmenu .dropdown ul li { min-width: 200px; }
+      .navmenu .dropdown ul a { padding: 10px 20px; font-size: 15px; color: var(--nav-dropdown-color); }
+      .navmenu .dropdown ul a:hover { color: var(--nav-dropdown-hover-color); }
+    }
+
+    /* Navigation Menu - Mobile */
+    @media (max-width: 1199px) {
+      .mobile-nav-toggle { 
+        color: var(--nav-color); 
+        font-size: 28px; 
+        line-height: 0; 
+        margin-right: 10px; 
+        cursor: pointer; 
+        transition: color 0.3s; 
+      }
+      .mobile-nav-toggle.bi-x { color: var(--nav-hover-color); }
+      .navmenu { padding: 0; z-index: 9997; }
+      .navmenu ul { 
+        display: none; 
+        list-style: none; 
+        position: fixed; 
+        inset: 60px 0 0 0; 
+        padding: 10px 0; 
+        margin: 0; 
+        background-color: var(--nav-mobile-background-color); 
+        overflow-y: auto; 
+        transition: 0.3s; 
+        z-index: 9998; 
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1); 
+        width: 250px; 
+        height: 100%; 
+        left: -250px; 
+      }
+      .navmenu ul.active { display: block; left: 0; }
+      .navmenu a, .navmenu a:focus { 
+        color: var(--nav-dropdown-color); 
+        padding: 12px 20px; 
+        font-family: var(--nav-font); 
+        font-size: 17px; 
+        font-weight: 500; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        white-space: nowrap; 
+        transition: 0.3s; 
+      }
+      .navmenu a:hover, .navmenu .active, .navmenu .active:focus { 
+        color: var(--nav-dropdown-hover-color); 
+        background-color: #f8f8f8; 
+      }
+      .navmenu .dropdown ul { 
+        display: none; 
+        position: static; 
+        background-color: #f0f0f0; 
+        padding-left: 20px; 
+      }
+      .navmenu .dropdown.active > ul { display: block; }
+      .mobile-nav-active { overflow: hidden; }
+    }
+
+    /* Translate Button */
+    .translate-btn { 
+      background-color: var(--accent-color); 
+      border: none; 
+      padding: 10px; 
+      border-radius: 50%; 
+      width: 40px; 
+      height: 40px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      transition: transform 0.3s, background-color 0.3s;
+    }
+    .translate-btn i { font-size: 20px; color: #fff; }
+    .translate-btn:hover { 
+      background-color: #ff8a65; 
+      transform: scale(1.1); 
+    }
+
+    /* FAQ Section (Travel Info) */
+    .faq-section { padding: 80px 0; background: #f9f9f9; }
+    .faq-header { text-align: center; margin-bottom: 40px; }
+    .faq-header h1 { font-size: 2.5rem; margin-bottom: 15px; }
+    .faq-header p { font-size: 1.1rem; color: #666; }
+    .faq-item { border-bottom: 1px solid #ddd; padding: 20px 0; display: flex; align-items: flex-start; cursor: pointer; }
+    .faq-item i { font-size: 44px; color: var(--accent-color); margin-right: 20px; flex-shrink: 0; }
+    .faq-item h5 { margin: 0; font-size: 1.3rem; }
+    .faq-item .faq-answer { display: none; margin-top: 15px; color: #555; font-size: 1rem; }
+    .faq-item.active .faq-answer { display: block; }
+    .faq-item ul { padding-left: 20px; margin-top: 10px; }
+    .faq-item ul li { margin-bottom: 5px; }
+
+    /* Weather App */
+    #weather-app { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); margin-bottom: 40px; text-align: center; }
+    #weather-app h1 { font-size: 1.8rem; margin-bottom: 15px; }
+    #city-select { padding: 10px; font-size: 1rem; margin-right: 10px; border-radius: 5px; border: 1px solid #ddd; }
+    #weather-app button { padding: 10px 20px; background: var(--accent-color); color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+    #weather-app button:hover { background: var(--nav-hover-color); }
+    #weather-info { margin-top: 20px; font-size: 1rem; color: #333; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .weather-card { 
+      width: 200px; 
+      padding: 15px; 
+      border: 1px solid #ddd; 
+      border-radius: 8px; 
+      background: #fff; 
+      transition: all 0.3s; 
+    }
+    .weather-card.current { 
+      border: 2px solid var(--accent-color); 
+      box-shadow: 0 0 10px rgba(255, 87, 34, 0.3); 
+    }
+    .weather-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
+    .weather-card p { margin: 5px 0; font-size: 0.9rem; }
+    #error-message { display: none; background: #ffebee; padding: 15px; border-radius: 5px; margin-top: 20px; text-align: center; }
+    #error-message h2 { font-size: 1.5rem; color: #d32f2f; margin-bottom: 10px; }
+    #error-message p { color: #666; margin-bottom: 10px; }
+    #error-message button { 
+      padding: 8px 15px; 
+      background: #d32f2f; 
+      color: #fff; 
+      border: none; 
+      border-radius: 5px; 
+      cursor: pointer; 
+      transition: background 0.3s; 
+    }
+    #error-message button:hover { background: #b71c1c; }
+
+    /* Travel Manuals Section */
+    #travel-manuals { padding: 40px 0; background: #fff; }
+    #travel-manuals h2 { text-align: center; font-size: 2rem; margin-bottom: 30px; }
+    .manuals-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .manual-card { width: 200px; text-align: center; }
+    .manual-card img { width: 100%; height: 280px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+    .manual-card h4 { font-size: 1.1rem; margin-bottom: 15px; }
+    .manual-card .download-btn { 
+      display: inline-block; 
+      padding: 8px 20px; 
+      background: #f0f0f0; 
+      color: var(--default-color); 
+      border: 1px solid #ddd; 
+      border-radius: 5px; 
+      text-decoration: none; 
+      transition: all 0.3s; 
+    }
+    .manual-card .download-btn:hover { background: var(--accent-color); color: #fff; border-color: var(--accent-color); }
+
+    /* Footer */
+    .footer { padding: 20px 0; background: #f9f9f9; }
+    .footer .social-links a { font-size: 18px; margin: 0 10px; color: var(--default-color); transition: color 0.3s; }
+    .footer .social-links a:hover { color: var(--accent-color); }
+  </style>
+</head>
+
+<body class="travel-info-page">
+
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">Visit Wolayta</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li class="dropdown">
+            <a href="#" class="active">Travel <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="travel-info.html" class="active">Travel Information</a></li>
+              <li><a href="booking.html">Booking</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#">Wolayta <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="history.html">History</a></li>
+              <li><a href="culture.html">Culture</a></li>
+              <li><a href="tourism.html">Tourism</a></li>
+              <li><a href="agro-forestry.html">Agro-Forestry</a></li>
+              <li><a href="documents.html">Documents & Resources</a></li>
+            </ul>
+          </li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="donate.html">Donate Us</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <button id="translate-wolayta" class="translate-btn ms-2" title="Translate to Wolayta">
+          <i class="bi bi-translate"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Travel Info Section -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="faq-header" data-aos="fade-up">
+          <h1 class="display-5 mb-4">Travel Information</h1>
+          <p class="mb-0">Check out the most common questions our visitors ask. If you need more information, feel free to contact us.</p>
+        </div>
+
+        <!-- Weather App -->
+        <div id="weather-app" data-aos="fade-up" data-aos-delay="100">
+          <h1>Check 5-Day Weather Forecast</h1>
+          <select id="city-select">
+            <option value="">Select a town</option>
+            <option value="Sodo">Sodo</option>
+            <option value="Areka">Areka</option>
+            <option value="Boditi">Boditi</option>
+            <option value="Gununo">Gununo</option>
+            <option value="Bitena">Bitena</option>
+            <option value="Gesuba">Gesuba</option>
+          </select>
+          <button onclick="getWeather()">Check Weather Info</button>
+          <div id="weather-info"></div>
+          <div id="error-message">
+            <h2>Error</h2>
+            <p id="error-text">City not found. Please check the town name and try again.</p>
+            <button onclick="hideError()">Close</button>
+          </div>
+        </div>
+
+        <!-- FAQ Items -->
+        <div class="faq-list" data-aos="fade-up" data-aos-delay="200">
+          <div class="faq-item">
+            <i class="bi bi-cloud-sun"></i>
+            <div>
+              <h5>Weather</h5>
+              <p class="faq-answer">Wolayta Zone has a warm, temperate climate with temperatures between 18°C and 28°C. Rainfall occurs mainly from March to May and June to September.</p>
+              <ul class="faq-answer">
+                <li>Pack lightweight clothing for warm weather.</li>
+                <li>Bring rain gear for wet seasons.</li>
+                <li>Check real-time weather above for your trip.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-item">
+            <i class="bi bi-wifi"></i>
+            <div>
+              <h5>Communication</h5>
+              <p class="faq-answer">Mobile networks like Ethio Telecom are reliable. Wi-Fi is available in hotels and cafes in towns like Sodo.</p>
+              <ul class="faq-answer">
+                <li>Local SIM cards are affordable.</li>
+                <li>Internet speed varies by location.</li>
+                <li>Emergency numbers: 911 (Police), 907 (Ambulance).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-item">
+            <i class="bi bi-shield"></i>
+            <div>
+              <h5>Security</h5>
+              <p class="faq-answer">Wolayta is generally safe for visitors. Local authorities maintain security at attractions like the Wolayta Sodo Museum.</p>
+              <ul class="faq-answer">
+                <li>Stay aware of your surroundings.</li>
+                <li>Travel in groups when possible.</li>
+                <li>Contact local guides for assistance.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-item">
+            <i class="bi bi-exclamation-triangle"></i>
+            <div>
+              <h5>Emergency</h5>
+              <p class="faq-answer">Hospitals and clinics are accessible in Sodo and other towns. Carry a basic first-aid kit for rural areas.</p>
+              <ul class="faq-answer">
+                <li>Emergency hotline: 911.</li>
+                <li>Pharmacies are well-stocked in urban areas.</li>
+                <li>Inform your embassy if needed.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="faq-item">
+            <i class="bi bi-passport"></i>
+            <div>
+              <h5>Visa and Papers</h5>
+              <p class="faq-answer">Tourists need a valid visa to enter Ethiopia. Apply online (e-Visa) or at an Ethiopian embassy.</p>
+              <ul class="faq-answer">
+                <li>e-Visa processing takes 1-3 days.</li>
+                <li>Passport must be valid for 6 months.</li>
+                <li>Carry ID copies at all times.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Travel Manuals Section -->
+        <section id="travel-manuals" data-aos="fade-up" data-aos-delay="300">
+          <h2>Download Travel Manuals</h2>
+          <div class="manuals-container">
+            <div class="manual-card">
+              <img src="assets/img/downloads/info (1).png" alt="Wolayta Travel Guide">
+              <h4>Wolayta Travel Guide</h4>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+            <div class="manual-card">
+              <img src="assets/img/downloads/info (2).png" alt="Cultural Tips">
+              <h4>Cultural Tips</h4>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+            <div class="manual-card">
+              <img src="assets/img/downloads/info (3).png" alt="Safety Information">
+              <h4>Safety Information</h4>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+            <div class="manual-card">
+              <img src="assets/img/downloads/info (4).png" alt="Local Map">
+              <h4>Local Map</h4>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Visit Wolayta</strong> <span>All Rights Reserved</span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="#" class="telegram"><i class="bi bi-telegram"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    // OpenWeatherMap API Key (Replace with your new, active key)
+    const apiKey = 'YOUR_NEW_API_KEY';
+    const currentDate = new Date(); // Dynamic current date
+
+    // Mock data for fallback (used if API fails)
+    const mockWeatherData = {
+      list: [
+        { dt: Math.floor(Date.now() / 1000), main: { temp: 25, humidity: 60 }, weather: [{ description: 'clear sky' }], wind: { speed: 3 } },
+        { dt: Math.floor(Date.now() / 1000) + 86400, main: { temp: 24, humidity: 65 }, weather: [{ description: 'few clouds' }], wind: { speed: 2.5 } },
+        { dt: Math.floor(Date.now() / 1000) + 2 * 86400, main: { temp: 23, humidity: 70 }, weather: [{ description: 'light rain' }], wind: { speed: 3.5 } },
+        { dt: Math.floor(Date.now() / 1000) + 3 * 86400, main: { temp: 26, humidity: 55 }, weather: [{ description: 'clear sky' }], wind: { speed: 2 } },
+        { dt: Math.floor(Date.now() / 1000) + 4 * 86400, main: { temp: 25, humidity: 62 }, weather: [{ description: 'scattered clouds' }], wind: { speed: 3 } }
+      ]
+    };
+
+    // Weather Function (Using Forecast API for 5 days)
+    function getWeather() {
+      const city = document.getElementById('city-select').value;
+      const weatherInfo = document.getElementById('weather-info');
+      const errorMessage = document.getElementById('error-message');
+      const errorText = document.getElementById('error-text');
+      
+      if (!city) {
+        weatherInfo.innerHTML = '';
+        errorText.textContent = 'Please select a town.';
+        errorMessage.style.display = 'block';
+        return;
+      }
+
+      // Check cache
+      const cacheKey = `weather_${city}`;
+      const cachedData = localStorage.getItem(cacheKey);
+      const cacheTime = localStorage.getItem(`${cacheKey}_time`);
+      const now = Date.now();
+
+      if (cachedData && cacheTime && now - cacheTime < 10 * 60 * 1000) {
+        displayWeather(JSON.parse(cachedData));
+        return;
+      }
+
+      const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},ET&appid=${apiKey}&units=metric`;
+      console.log('Fetching URL:', url); // For debugging
+
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            if (response.status === 401) {
+              throw new Error('Invalid API key. Please check your OpenWeatherMap API key and ensure it is active.');
+            }
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('API Response:', data); // For debugging
+          // Cache the data
+          localStorage.setItem(cacheKey, JSON.stringify(data));
+          localStorage.setItem(`${cacheKey}_time`, now);
+          displayWeather(data);
+        })
+        .catch(error => {
+          console.error('Fetch error:', error);
+          weatherInfo.innerHTML = '';
+          errorText.textContent = error.message.includes('Invalid API key') 
+            ? 'Weather data unavailable due to an invalid API key. Using sample data instead.'
+            : `Failed to fetch weather data: ${error.message}. Using sample data instead.`;
+          errorMessage.style.display = 'block';
+          // Fallback to mock data
+          displayWeather(mockWeatherData);
+        });
+    }
+
+    // Display Weather Data
+    function displayWeather(data) {
+      const weatherInfo = document.getElementById('weather-info');
+      const errorMessage = document.getElementById('error-message');
+      errorMessage.style.display = 'none';
+      weatherInfo.innerHTML = '';
+
+      // Get daily forecasts (one per day at 12:00 PM or closest)
+      const dailyForecasts = [];
+      const seenDates = new Set();
+      for (let i = 0; i < data.list.length && dailyForecasts.length < 5; i++) {
+        const forecast = data.list[i];
+        const forecastDate = new Date(forecast.dt * 1000);
+        const dateStr = forecastDate.toDateString();
+
+        if (!seenDates.has(dateStr)) {
+          dailyForecasts.push(forecast);
+          seenDates.add(dateStr);
+        }
+      }
+
+      // Display 5-day forecast in cards
+      dailyForecasts.forEach((forecast, index) => {
+        const forecastDate = new Date(forecast.dt * 1000);
+        const isCurrentDay = forecastDate.toDateString() === currentDate.toDateString();
+        const card = document.createElement('div');
+        card.className = `weather-card ${isCurrentDay ? 'current' : ''}`;
+        card.innerHTML = `
+          <h3>${forecastDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</h3>
+          <p>Temp: ${forecast.main.temp}°C</p>
+          <p>${forecast.weather[0].description}</p>
+          <p>Humidity: ${forecast.main.humidity}%</p>
+          <p>Wind: ${forecast.wind.speed} m/s</p>
+        `;
+        weatherInfo.appendChild(card);
+      });
+    }
+
+    // Hide Error Message
+    function hideError() {
+      document.getElementById('error-message').style.display = 'none';
+    }
+
+    // AOS Initialization
+    AOS.init({ duration: 1000, once: true });
+
+    // Mobile Nav Toggle
+    const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+    const navmenu = document.querySelector('#navmenu ul');
+    if (mobileNavToggleBtn && navmenu) {
+      mobileNavToggleBtn.addEventListener('click', () => {
+        navmenu.classList.toggle('active');
+        mobileNavToggleBtn.classList.toggle('bi-list');
+        mobileNavToggleBtn.classList.toggle('bi-x');
+        document.body.classList.toggle('mobile-nav-active');
+      });
+    }
+
+    // Dropdown Toggle for Mobile
+    document.querySelectorAll('.navmenu .dropdown > a').forEach(dropdown => {
+      dropdown.addEventListener('click', (e) => {
+        if (window.innerWidth < 1200) {
+          e.preventDefault();
+          const parent = dropdown.parentElement;
+          parent.classList.toggle('active');
+        }
+      });
+    });
+
+    // Sticky Header on Scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('#header');
+      if (window.scrollY > 50) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    });
+
+    // Translate Button (Placeholder)
+    document.getElementById('translate-wolayta').addEventListener('click', () => {
+      alert('Translation to Wolayta functionality to be implemented!');
+    });
+
+    // FAQ Toggle
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+
+    // Scroll Top Button
+    const scrollTop = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) scrollTop.classList.add('active');
+      else scrollTop.classList.remove('active');
+    });
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+
+</html>
