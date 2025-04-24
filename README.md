@@ -1,5 +1,5 @@
 # VisitWolayta
-    Home
+
     About
     Destinations
     Gallery
