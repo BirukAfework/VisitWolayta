@@ -1,1 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>About Visit Wolayta Tourism Agency</title>
+  <meta name="description" content="Learn about Visit Wolayta Tourism Agency, meet our team, and support our mission to promote sustainable tourism in Wolayta, Ethiopia.">
+  <meta name="keywords" content="Visit Wolayta, Tourism Agency, Wolayta, Ethiopia, culture, history, travel, team, donate">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      --heading-font: "Questrial", sans-serif;
+      --nav-font: "Noto Sans", sans-serif;
+      --background-color: #ffffff;
+      --default-color: #0a0f14;
+      --heading-color: #0f2943;
+      --accent-color: #ff5722;
+      --secondary-accent: #d32f2f;
+      --surface-color: #ffffff;
+      --contrast-color: #ffffff;
+      --nav-color: #0a0f14;
+      --nav-hover-color: #ff5722;
+      --nav-mobile-background-color: #ffffff;
+      --nav-dropdown-background-color: #ffffff;
+      --nav-dropdown-color: #0a0f14;
+      --nav-dropdown-hover-color: #ff5722;
+    }
+
+    body { 
+      color: var(--default-color); 
+      background-color: var(--background-color); 
+      font-family: var(--default-font); 
+      margin: 0; 
+      padding: 0; 
+    }
+    a { color: var(--accent-color); text-decoration: none; transition: 0.3s; }
+    a:hover { color: color-mix(in srgb, var(--accent-color), transparent 25%); }
+    h1, h2, h3, h4, h5, h6 { color: var(--heading-color); font-family: var(--heading-font); }
+
+    /* Header */
+    .header { 
+      padding: 20px 0; 
+      transition: all 0.5s; 
+      z-index: 997; 
+      position: fixed; 
+      top: 0; 
+      width: 100%; 
+      background: transparent; 
+    }
+    .header.sticky { 
+      background: rgba(255, 255, 255, 0.95); 
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
+    }
+    .header .header-container { 
+      background: rgba(255, 255, 255, 0.9); 
+      border-radius: 50px; 
+      padding: 5px 25px; 
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
+      max-width: 1200px; 
+      margin: 0 auto; 
+    }
+    .header .logo h1 { font-size: 24px; margin: 0; padding-left: 5px; font-weight: 500; color: var(--heading-color); }
+
+    /* Navigation Menu - Desktop */
+    @media (min-width: 1200px) {
+      .navmenu { padding: 0; }
+      .navmenu ul { margin: 0; padding: 0; display: flex; list-style: none; align-items: center; }
+      .navmenu li { position: relative; }
+      .navmenu a, .navmenu a:focus { 
+        color: var(--nav-color); 
+        padding: 18px 15px; 
+        font-size: 16px; 
+        font-family: var(--nav-font); 
+        font-weight: 400; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        white-space: nowrap; 
+        transition: 0.3s; 
+      }
+      .navmenu a i, .navmenu a:focus i { font-size: 12px; line-height: 0; margin-left: 5px; transition: 0.3s; }
+      .navmenu li:hover>a, .navmenu .active, .navmenu .active:focus { color: var(--nav-hover-color); }
+      .navmenu .dropdown ul { 
+        display: none; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        background-color: var(--nav-dropdown-background-color); 
+        padding: 10px 0; 
+        border-radius: 6px; 
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1); 
+      }
+      .navmenu .dropdown:hover > ul { display: block; }
+      .navmenu .dropdown ul li { min-width: 200px; }
+      .navmenu .dropdown ul a { padding: 10px 20px; font-size: 15px; color: var(--nav-dropdown-color); }
+      .navmenu .dropdown ul a:hover { color: var(--nav-dropdown-hover-color); }
+    }
+
+    /* Navigation Menu - Mobile */
+    @media (max-width: 1199px) {
+      .mobile-nav-toggle { 
+        color: var(--nav-color); 
+        font-size: 28px; 
+        line-height: 0; 
+        margin-right: 10px; 
+        cursor: pointer; 
+        transition: color 0.3s; 
+      }
+      .mobile-nav-toggle.bi-x { color: var(--nav-hover-color); }
+      .navmenu { padding: 0; z-index: 9997; }
+      .navmenu ul { 
+        display: none; 
+        list-style: none; 
+        position: fixed; 
+        inset: 60px 0 0 0; 
+        padding: 10px 0; 
+        margin: 0; 
+        background-color: var(--nav-mobile-background-color); 
+        overflow-y: auto; 
+        transition: 0.3s; 
+        z-index: 9998; 
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1); 
+        width: 250px; 
+        height: 100%; 
+        left: -250px; 
+      }
+      .navmenu ul.active { display: block; left: 0; }
+      .navmenu a, .navmenu a:focus { 
+        color: var(--nav-dropdown-color); 
+        padding: 12px 20px; 
+        font-family: var(--nav-font); 
+        font-size: 17px; 
+        font-weight: 500; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        white-space: nowrap; 
+        transition: 0.3s; 
+      }
+      .navmenu a:hover, .navmenu .active, .navmenu .active:focus { 
+        color: var(--nav-dropdown-hover-color); 
+        background-color: #f8f8f8; 
+      }
+      .navmenu .dropdown ul { 
+        display: none; 
+        position: static; 
+        background-color: #f0f0f0; 
+        padding-left: 20px; 
+      }
+      .navmenu .dropdown.active > ul { display: block; }
+      .mobile-nav-active { overflow: hidden; }
+    }
+
+    /* Translate Button */
+    .translate-btn { 
+      background-color: var(--accent-color); 
+      border: none; 
+      padding: 10px; 
+      border-radius: 50%; 
+      width: 40px; 
+      height: 40px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      transition: transform 0.3s, background-color 0.3s;
+    }
+    .translate-btn i { font-size: 20px; color: #fff; }
+    .translate-btn:hover { 
+      background-color: #ff8a65; 
+      transform: scale(1.1); 
+    }
+
+    /* Hero Section */
+    .hero { 
+      padding: 0; 
+      position: relative; 
+      overflow: hidden; 
+      min-height: 100vh; 
+      display: flex; 
+      flex-direction: column; 
+      background-size: cover; 
+      background-position: center; 
+      background-repeat: no-repeat; 
+      transition: background-image 1s ease-in-out; 
+    }
+    .hero::before { 
+      content: ''; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: rgba(0, 0, 0, 0.4); 
+      z-index: 1; 
+    }
+    .hero .container { 
+      position: relative; 
+      z-index: 2; 
+      flex-grow: 1; 
+      display: flex; 
+      align-items: center; 
+    }
+    .hero .content h2 { 
+      font-size: 3.5rem; 
+      font-weight: 700; 
+      line-height: 1.2; 
+      margin-bottom: 1.5rem; 
+      color: #fff; 
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    }
+    .hero .content .lead { 
+      font-size: 1.25rem; 
+      margin-bottom: 2rem; 
+      color: #fff; 
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+    }
+    .hero .cta-buttons .btn { 
+      padding: 0.8rem 2rem; 
+      font-size: 1rem; 
+      font-weight: 500; 
+      border-radius: 50px; 
+      transition: all 0.3s ease; 
+    }
+    .hero .cta-buttons .btn.btn-primary { 
+      background-color: var(--accent-color); 
+      border-color: var(--accent-color); 
+      color: var(--contrast-color); 
+    }
+    .hero .cta-buttons .btn.btn-outline { 
+      border: 2px solid #fff; 
+      color: #fff; 
+      background: transparent; 
+    }
+    .hero .cta-buttons .btn.btn-outline:hover { 
+      background: #fff; 
+      color: var(--heading-color); 
+    }
+
+    /* Features Section (for About, Mission-Vision, Services) */
+    .features { padding: 80px 0; }
+    .features .row { margin-bottom: 40px; }
+    .features h3 { margin-bottom: 20px; color: var(--accent-color); }
+    .features p { font-size: 1.1rem; color: color-mix(in srgb, var(--default-color), transparent 25%); }
+    .features .btn-get-started { 
+      display: inline-block; 
+      padding: 10px 30px; 
+      background-color: var(--secondary-accent); 
+      color: var(--contrast-color); 
+      border-radius: 50px; 
+      transition: all 0.3s ease; 
+    }
+    .features .btn-get-started:hover { 
+      background-color: color-mix(in srgb, var(--secondary-accent), transparent 15%); 
+    }
+
+    /* Mission Vision Section */
+    .mission-vision { padding: 80px 0; background: #f9f9f9; }
+    .mission-vision .card { 
+      border: none; 
+      border-radius: 16px; 
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1); 
+      padding: 30px; 
+      height: 100%; 
+    }
+    .mission-vision .card h4 { font-size: 1.8rem; color: var(--accent-color); margin-bottom: 15px; }
+    .mission-vision .card p { font-size: 1rem; color: color-mix(in srgb, var(--default-color), transparent 25%); }
+
+    /* Services Section */
+    .services { padding: 80px 0; }
+    .services h3 { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent-color); text-align: center; }
+    .services .service-item { 
+      padding: 30px; 
+      border-radius: 16px; 
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1); 
+      text-align: center; 
+      transition: transform 0.3s; 
+    }
+    .services .service-item:hover { transform: translateY(-10px); }
+    .services .service-item i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 20px; }
+    .services .service-item h4 { font-size: 1.5rem; color: var(--heading-color); margin-bottom: 15px; }
+    .services .service-item p { font-size: 1rem; color: color-mix(in srgb, var(--default-color), transparent 25%); }
+
+    /* Team Section */
+    .team { padding: 80px 0; background: #fff; }
+    .team h3 { font-size: 2.5rem; margin-bottom: 40px; color: var(--accent-color); text-align: center; }
+    .team .team-member { 
+      background: #fff; 
+      border-radius: 16px; 
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1); 
+      overflow: hidden; 
+      transition: transform 0.3s; 
+      text-align: center; 
+      padding-bottom: 20px; 
+    }
+    .team .team-member:hover { transform: translateY(-10px); }
+    .team .team-member img { 
+      width: 100%; 
+      height: 250px; 
+      object-fit: cover; 
+      margin-bottom: 20px; 
+    }
+    .team .team-member h4 { font-size: 1.5rem; color: var(--heading-color); margin-bottom: 5px; }
+    .team .team-member .role { font-size: 1rem; color: var(--accent-color); margin-bottom: 10px; display: block; }
+    .team .team-member p { font-size: 0.9rem; color: color-mix(in srgb, var(--default-color), transparent 25%); padding: 0 20px; }
+    .team .team-member .social-links a { 
+      font-size: 1.2rem; 
+      color: var(--default-color); 
+      margin: 0 10px; 
+      transition: color 0.3s; 
+    }
+    .team .team-member .social-links a:hover { color: var(--accent-color); }
+
+    /* Donate Us Section */
+    .donate-us { padding: 80px 0; background: #f9f9f9; }
+    .donate-us h3 { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent-color); text-align: center; }
+    .donate-us p { font-size: 1.1rem; color: color-mix(in srgb, var(--default-color), transparent 25%); text-align: center; max-width: 800px; margin: 0 auto 30px; }
+    .donate-us .btn-donate { 
+      display: inline-block; 
+      padding: 12px 40px; 
+      background-color: var(--secondary-accent); 
+      color: var(--contrast-color); 
+      border-radius: 50px; 
+      font-size: 1.1rem; 
+      transition: all 0.3s ease; 
+      text-align: center; 
+    }
+    .donate-us .btn-donate:hover { 
+      background-color: color-mix(in srgb, var(--secondary-accent), transparent 15%); 
+    }
+
+    /* Footer */
+    .footer { padding: 20px 0; background: #f9f9f9; }
+    .footer .social-links a { font-size: 18px; margin: 0 10px; color: var(--default-color); transition: color 0.3s; }
+    .footer .social-links a:hover { color: var(--accent-color); }
+  </style>
+</head>
+
+<body class="about-page">
+
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">Visit Wolayta</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li class="dropdown">
+            <a href="#">Travel <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="travel-info.html">Travel Information</a></li>
+              <li><a href="booking.html">Booking</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#">Wolayta <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="history.html">History</a></li>
+              <li><a href="culture.html">Culture</a></li>
+              <li><a href="tourism.html">Tourism</a></li>
+              <li><a href="agro-forestry.html">Agro-Forestry</a></li>
+              <li><a href="documents.html">Documents & Resources</a></li>
+            </ul>
+          </li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#donate-us">Donate Us</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <button id="translate-wolayta" class="translate-btn ms-2" title="Translate to Wolayta">
+          <i class="bi bi-translate"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row align-items-center content">
+          <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+            <h2>About Visit Wolayta Tourism Agency</h2>
+            <p class="lead">Your trusted partner in discovering the vibrant heritage, stunning landscapes, and rich culture of Wolayta, Ethiopia.</p>
+            <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
+              <a href="#about" class="btn btn-primary">Learn More</a>
+              <a href="contact.html" class="btn btn-outline">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="features section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row align-items-center">
+          <div class="col-md-5">
+            <img src="assets/img/wolayta-culture.jpg" class="img-fluid" style="border-radius: 16px; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);">
+          </div>
+          <div class="col-md-7 pt-4">
+            <h3>Who We Are</h3>
+            <p>
+              Visit Wolayta Tourism Agency, based in Wolaita Sodo, Ethiopia, is a premier tour operator dedicated to showcasing the hidden treasures of the Wolayta region. Established in 2015, our agency is licensed by the Ethiopian Ministry of Culture and Tourism and is committed to promoting sustainable tourism that preserves Wolayta’s rich heritage while uplifting local communities. We specialize in crafting personalized travel experiences that highlight the region’s unique blend of history, culture, and natural beauty.
+            </p>
+            <p>
+              Wolayta, located 300 km south of Addis Ababa, is a land of royal heritage with over 50 kings across four dynasties, vibrant festivals like Gifaataa, and breathtaking attractions such as Ajora Falls and Mount Damota. Our passionate team of local experts ensures every journey is immersive, authentic, and unforgettable.
+            </p>
+            <a href="contact.html" class="btn-get-started">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission and Vision Section -->
+    <section id="mission-vision" class="mission-vision section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="card" data-aos="fade-up" data-aos-delay="200">
+              <h4>Our Mission</h4>
+              <p>
+                To provide exceptional travel experiences that celebrate Wolayta’s cultural heritage, natural wonders, and community spirit, while promoting sustainable tourism practices that benefit local residents and preserve the environment for future generations.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="card" data-aos="fade-up" data-aos-delay="300">
+              <h4>Our Vision</h4>
+              <p>
+                To establish Wolayta as a must-visit destination on the global tourism map, recognized for its rich history, vibrant culture, and unparalleled natural beauty, fostering economic growth and cultural pride in the region.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <h3>Our Services</h3>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+              <i class="bi bi-map"></i>
+              <h4>Cultural & Historical Tours</h4>
+              <p>
+                Explore Wolayta’s royal past with guided tours to historical sites like the Mochena Borago Rockshelter and the legacy of Kawo Tona Gaga, the last king of the Wolaita Kingdom.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-tree"></i>
+              <h4>Nature & Adventure Trips</h4>
+              <p>
+                Discover the stunning landscapes of Ajora Falls, Mount Damota, and the lush forests along the Ajacho River, with hiking and eco-tourism adventures tailored to all levels.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-people"></i>
+              <h4>Community-Based Experiences</h4>
+              <p>
+                Engage with Wolayta’s vibrant culture through village visits, coffee cycle tours, and participation in festivals like Gifaataa, fostering meaningful connections with local communities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <h3>Meet Our Team</h3>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+              <img src="assets/img/team-member-1.jpg" alt="Abebe Kebede">
+              <h4>Abebe Kebede</h4>
+              <span class="role">Founder & CEO</span>
+              <p>
+                With over 15 years in tourism, Abebe leads our mission to showcase Wolayta’s heritage, blending passion for culture with sustainable practices.
+              </p>
+              <div class="social-links">
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+              <img src="assets/img/team-member-2.jpg" alt="Marta Tadesse">
+              <h4>Marta Tadesse</h4>
+              <span class="role">Tour Operations Manager</span>
+              <p>
+                Marta designs immersive itineraries, ensuring every trip captures Wolayta’s natural beauty and cultural vibrancy with expert local knowledge.
+              </p>
+              <div class="social-links">
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="team-member" data-aos="fade-up" data-aos-delay="400">
+              <img src="assets/img/team-member-3.jpg" alt="Yohannes Lemma">
+              <h4>Yohannes Lemma</h4>
+              <span class="role">Community Engagement Coordinator</span>
+              <p>
+                Yohannes connects travelers with local communities, fostering authentic experiences like Gifaataa Festival participation and village visits.
+              </p>
+              <div class="social-links">
+                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Donate Us Section -->
+    <section id="donate-us" class="donate-us section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <h3>Support Our Mission</h3>
+        <p>
+          Your generous donations help us promote sustainable tourism in Wolayta, preserve our cultural heritage, and empower local communities. Every contribution supports eco-friendly initiatives, cultural preservation projects, and community development programs that make Wolayta a vibrant destination for all.
+        </p>
+        <div class="text-center">
+          <a href="donate.html" class="btn-get-started">Donate Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Visit Wolayta</strong> <span>All Rights Reserved</span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="#" class="telegram"><i class="bi bi-telegram"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/waypoints@4.0.1/lib/noframework.waypoints.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs@1.5.0/dist/purecounter_vanilla.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    // Hero Background Slideshow
+    const heroImages = [
+      'assets/img/wolayta-hero.jpg',
+      'assets/img/ajora-falls.jpg',
+      'assets/img/wolayta-culture.jpg',
+    ];
+    let currentImageIndex = 0;
+    const heroSection = document.querySelector('#hero');
+
+    function changeBackgroundImage() {
+      heroSection.style.backgroundImage = `url(${heroImages[currentImageIndex]})`;
+      currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+    }
+
+    changeBackgroundImage();
+    setInterval(changeBackgroundImage, 5000);
+
+    // AOS Initialization
+    AOS.init({ duration: 1000, once: true });
+
+    // Mobile Nav Toggle
+    const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+    const navmenu = document.querySelector('#navmenu ul');
+    if (mobileNavToggleBtn && navmenu) {
+      mobileNavToggleBtn.addEventListener('click', () => {
+        navmenu.classList.toggle('active');
+        mobileNavToggleBtn.classList.toggle('bi-list');
+        mobileNavToggleBtn.classList.toggle('bi-x');
+        document.body.classList.toggle('mobile-nav-active');
+      });
+    }
+
+    // Dropdown Toggle for Mobile
+    document.querySelectorAll('.navmenu .dropdown > a').forEach(dropdown => {
+      dropdown.addEventListener('click', (e) => {
+        if (window.innerWidth < 1200) {
+          e.preventDefault();
+          const parent = dropdown.parentElement;
+          parent.classList.toggle('active');
+        }
+      });
+    });
+
+    // Sticky Header on Scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('#header');
+      if (window.scrollY > 50) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    });
+
+    // Translate Button (Placeholder)
+    document.getElementById('translate-wolayta').addEventListener('click', () => {
+      alert('Translation to Wolayta functionality to be implemented!');
+    });
+
+    // Scroll Top Button
+    const scrollTop = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) scrollTop.classList.add('active');
+      else scrollTop.classList.remove('active');
+    });
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+
+</html>
