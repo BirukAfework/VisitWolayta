@@ -6,7 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Visit Wolayta - Home</title>
   <meta name="description" content="Explore the rich history, vibrant culture, and natural wonders of Wolayta, Ethiopia.">
-  <meta name="keywords" content="Wolayta, travel, tourism, Ethiopia, culture, history">
+  <meta name="keywords" content="Wolayta, Ethiopia, culture, history, tourism, Gifaataa Festival">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -33,23 +33,25 @@
       --background-color: #ffffff;
       --default-color: #0a0f14;
       --heading-color: #0f2943;
-      --accent-color: #4caf50; 
-      --secondary-accent: #d32f2f; /* Red from Wolayta traditional dressing */
-      --tertiary-accent: #ffeb3b; /* Yellow from cultural attire */
+      --accent-color: #ff5722;
+      --secondary-accent: #d32f2f;
       --surface-color: #ffffff;
       --contrast-color: #ffffff;
       --nav-color: #0a0f14;
-      --nav-hover-color: #4caf50;
+      --nav-hover-color: #ff5722;
       --nav-mobile-background-color: #ffffff;
       --nav-dropdown-background-color: #ffffff;
       --nav-dropdown-color: #0a0f14;
-      --nav-dropdown-hover-color: #4caf50;
+      --nav-dropdown-hover-color: #ff5722;
     }
 
-    .light-background { --background-color: #faf9fb; --surface-color: #ffffff; }
-    .dark-background { --background-color: #060606; --default-color: #ffffff; --heading-color: #ffffff; --surface-color: #252525; --contrast-color: #ffffff; }
-    :root { scroll-behavior: smooth; }
-    body { color: var(--default-color); background-color: var(--background-color); font-family: var(--default-font); }
+    body { 
+      color: var(--default-color); 
+      background-color: var(--background-color); 
+      font-family: var(--default-font); 
+      margin: 0; 
+      padding: 0; 
+    }
     a { color: var(--accent-color); text-decoration: none; transition: 0.3s; }
     a:hover { color: color-mix(in srgb, var(--accent-color), transparent 25%); }
     h1, h2, h3, h4, h5, h6 { color: var(--heading-color); font-family: var(--heading-font); }
@@ -59,14 +61,22 @@
       padding: 20px 0; 
       transition: all 0.5s; 
       z-index: 997; 
-      position: relative; 
+      position: fixed; 
+      top: 0; 
+      width: 100%; 
       background: transparent; 
+    }
+    .header.sticky { 
+      background: rgba(255, 255, 255, 0.95); 
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
     }
     .header .header-container { 
       background: rgba(255, 255, 255, 0.9); 
       border-radius: 50px; 
       padding: 5px 25px; 
       box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
+      max-width: 1200px; 
+      margin: 0 auto; 
     }
     .header .logo h1 { font-size: 24px; margin: 0; padding-left: 5px; font-weight: 500; color: var(--heading-color); }
 
@@ -75,10 +85,30 @@
       .navmenu { padding: 0; }
       .navmenu ul { margin: 0; padding: 0; display: flex; list-style: none; align-items: center; }
       .navmenu li { position: relative; }
-      .navmenu a, .navmenu a:focus { color: var(--nav-color); padding: 18px 15px; font-size: 16px; font-family: var(--nav-font); font-weight: 400; display: flex; align-items: center; justify-content: space-between; white-space: nowrap; transition: 0.3s; }
+      .navmenu a, .navmenu a:focus { 
+        color: var(--nav-color); 
+        padding: 18px 15px; 
+        font-size: 16px; 
+        font-family: var(--nav-font); 
+        font-weight: 400; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        white-space: nowrap; 
+        transition: 0.3s; 
+      }
       .navmenu a i, .navmenu a:focus i { font-size: 12px; line-height: 0; margin-left: 5px; transition: 0.3s; }
       .navmenu li:hover>a, .navmenu .active, .navmenu .active:focus { color: var(--nav-hover-color); }
-      .navmenu .dropdown ul { display: none; position: absolute; top: 100%; left: 0; background-color: var(--nav-dropdown-background-color); padding: 10px 0; border-radius: 6px; box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1); }
+      .navmenu .dropdown ul { 
+        display: none; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        background-color: var(--nav-dropdown-background-color); 
+        padding: 10px 0; 
+        border-radius: 6px; 
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1); 
+      }
       .navmenu .dropdown:hover > ul { display: block; }
       .navmenu .dropdown ul li { min-width: 200px; }
       .navmenu .dropdown ul a { padding: 10px 20px; font-size: 15px; color: var(--nav-dropdown-color); }
@@ -87,16 +117,57 @@
 
     /* Navigation Menu - Mobile */
     @media (max-width: 1199px) {
-      .mobile-nav-toggle { color: var(--nav-color); font-size: 28px; line-height: 0; margin-right: 10px; cursor: pointer; transition: color 0.3s; }
+      .mobile-nav-toggle { 
+        color: var(--nav-color); 
+        font-size: 28px; 
+        line-height: 0; 
+        margin-right: 10px; 
+        cursor: pointer; 
+        transition: color 0.3s; 
+      }
+      .mobile-nav-toggle.bi-x { color: var(--nav-hover-color); }
       .navmenu { padding: 0; z-index: 9997; }
-      .navmenu ul { display: none; list-style: none; position: fixed; inset: 60px 0 0 0; padding: 10px 0; margin: 0; background-color: var(--nav-mobile-background-color); overflow-y: auto; transition: 0.3s; z-index: 9998; box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1); width: 250px; height: 100%; left: -250px; }
+      .navmenu ul { 
+        display: none; 
+        list-style: none; 
+        position: fixed; 
+        inset: 60px 0 0 0; 
+        padding: 10px 0; 
+        margin: 0; 
+        background-color: var(--nav-mobile-background-color); 
+        overflow-y: auto; 
+        transition: 0.3s; 
+        z-index: 9998; 
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1); 
+        width: 250px; 
+        height: 100%; 
+        left: -250px; 
+      }
       .navmenu ul.active { display: block; left: 0; }
-      .navmenu a, .navmenu a:focus { color: var(--nav-dropdown-color); padding: 12px 20px; font-family: var(--nav-font); font-size: 17px; font-weight: 500; display: flex; align-items: center; justify-content: space-between; white-space: nowrap; transition: 0.3s; }
-      .navmenu a:hover, .navmenu .active, .navmenu .active:focus { color: var(--nav-dropdown-hover-color); background-color: #f8f8f8; }
-      .navmenu .dropdown ul { display: none; position: static; background-color: #f0f0f0; padding-left: 20px; }
+      .navmenu a, .navmenu a:focus { 
+        color: var(--nav-dropdown-color); 
+        padding: 12px 20px; 
+        font-family: var(--nav-font); 
+        font-size: 17px; 
+        font-weight: 500; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        white-space: nowrap; 
+        transition: 0.3s; 
+      }
+      .navmenu a:hover, .navmenu .active, .navmenu .active:focus { 
+        color: var(--nav-dropdown-hover-color); 
+        background-color: #f8f8f8; 
+      }
+      .navmenu .dropdown ul { 
+        display: none; 
+        position: static; 
+        background-color: #f0f0f0; 
+        padding-left: 20px; 
+      }
       .navmenu .dropdown.active > ul { display: block; }
-      .mobile-nav-active .navmenu { overflow: hidden; }
-      .mobile-nav-active body { overflow: hidden; }
+      .mobile-nav-active { overflow: hidden; }
     }
 
     /* Translate Button */
@@ -110,15 +181,15 @@
       display: flex; 
       align-items: center; 
       justify-content: center; 
-      transition: transform 0.3s, background-color 0.3s; 
+      transition: transform 0.3s, background-color 0.3s;
     }
     .translate-btn i { font-size: 20px; color: #fff; }
     .translate-btn:hover { 
-      background-color: #81c784; 
+      background-color: #ff8a65; 
       transform: scale(1.1); 
     }
 
-    
+    /* Hero Section */
     .hero { 
       padding: 0; 
       position: relative; 
@@ -187,12 +258,12 @@
     /* Features Section */
     .features { padding: 80px 0; }
     .features .row { margin-bottom: 40px; }
-    .features h3 { margin-bottom: 20px; color: var(--accent-color); /* Green headings */ }
+    .features h3 { margin-bottom: 20px; color: var(--accent-color); }
     .features p { font-size: 1.1rem; color: color-mix(in srgb, var(--default-color), transparent 25%); }
     .features .btn-get-started { 
       display: inline-block; 
       padding: 10px 30px; 
-      background-color: var(--secondary-accent); /* Red for buttons */ 
+      background-color: var(--secondary-accent); 
       color: var(--contrast-color); 
       border-radius: 50px; 
       transition: all 0.3s ease; 
@@ -202,78 +273,80 @@
     }
 
     /* Footer */
-    .footer { padding: 40px 0; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05); }
-    .footer .social-links a { color: var(--accent-color); margin: 0 10px; }
-    .footer .social-links a:hover { color: var(--secondary-accent); }
+    .footer { padding: 20px 0; background: #f9f9f9; }
+    .footer .social-links a { font-size: 18px; margin: 0 10px; color: var(--default-color); transition: color 0.3s; }
+    .footer .social-links a:hover { color: var(--accent-color); }
   </style>
 </head>
 
 <body class="index-page">
 
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">Visit Wolayta</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li class="dropdown">
+            <a href="#">Travel <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="travel-info.html">Travel Information</a></li>
+              <li><a href="booking.html">Booking</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#">Wolayta <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="history.html">History</a></li>
+              <li><a href="culture.html">Culture</a></li>
+              <li><a href="tourism.html">Tourism</a></li>
+              <li><a href="agro-forestry.html">Agro-Forestry</a></li>
+              <li><a href="documents.html">Documents & Resources</a></li>
+            </ul>
+          </li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="donate.html">Donate Us</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <button id="translate-wolayta" class="translate-btn ms-2" title="Translate to Wolayta">
+          <i class="bi bi-translate"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
   <main class="main">
     <!-- Hero Section -->
     <section id="hero" class="hero section">
-      <header id="header" class="header d-flex align-items-center sticky-top">
-        <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-          <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-            <h1 class="sitename">Visit Wolayta</h1>
-          </a>
-
-          <nav id="navmenu" class="navmenu">
-            <ul>
-              <li><a href="index.html" class="active">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="destinations.html">Destinations</a></li>
-              <li class="dropdown">
-                <a href="#">Travel <i class="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="travel-info.html">Travel Information</a></li>
-                  <li><a href="booking.html">Booking</a></li>
-                  <li><a href="reviews.html">Reviews</a></li>
-                </ul>
-              </li>
-              <li><a href="gallery.html">Gallery</a></li>
-              <li class="dropdown">
-                <a href="#">Wolayta <i class="bi bi-chevron-down"></i></a>
-                <ul>
-                  <li><a href="history.html">History</a></li>
-                  <li><a href="culture.html">Culture</a></li>
-                  <li><a href="tourism.html">Tourism</a></li>
-                  <li><a href="agriculture.html">Agriculture</a></li>
-                  <li><a href="comingsoon.html">Documents & Resources</a></li>
-                </ul>
-              </li>
-              <li><a href="events.html">Events</a></li>
-              <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-          </nav>
-
-          <div class="header-social-links">
-            <button id="translate-amharic" class="translate-btn ms-2" title="Translate to Amharic">
-              <i class="bi bi-translate"></i>
-            </button>
-          </div>
-        </div>
-      </header>
-
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="row align-items-center content">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h2>Discover the Wonders of Wolayta</h2>
-            <p class="lead">Experience the royal heritage, vibrant traditions, and breathtaking landscapes of Wolayta, Ethiopia.</p>
+            <h2>Discover Wolayta</h2>
+            <p class="lead">Experience the royal heritage, vibrant culture, and stunning landscapes of Wolayta, Ethiopia.</p>
             <div class="cta-buttons" data-aos="fade-up" data-aos-delay="300">
-              <a href="#features" class="btn btn-primary">Plan Your Trip</a>
-              <a href="#features" class="btn btn-outline">Learn More</a>
+              <a href="#features" class="btn btn-primary">Explore Highlights</a>
+              <a href="travel-info.html" class="btn btn-outline">Plan Your Trip</a>
             </div>
           </div>
         </div>
       </div>
-    </section><!-- /Hero Section -->
+    </section>
 
     <!-- Features Section -->
     <section class="features">
-      <div class="container"><br><br>
+      <div class="container">
         <div class="row" data-aos="fade-up">
           <div class="col-md-5">
             <img src="assets/img/Kawa_Tona.jpg" class="img-fluid" style="border-radius: 16px; box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);">
@@ -339,9 +412,10 @@
           </div>
         </div>
       </div>
-    </section><!-- End Features Section -->
+    </section>
   </main>
 
+  <!-- Footer -->
   <footer id="footer" class="footer">
     <div class="container">
       <div class="copyright text-center">
@@ -384,91 +458,56 @@
       currentImageIndex = (currentImageIndex + 1) % heroImages.length;
     }
 
-    // Initial background
     changeBackgroundImage();
-    // Change every 5 seconds
     setInterval(changeBackgroundImage, 5000);
 
-    // Translate to Amharic Functionality (Placeholder)
-    const translateBtn = document.getElementById('translate-amharic');
-    translateBtn.addEventListener('click', () => {
-      alert('Translation to Amharic functionality to be implemented.');
-    });
-
     // AOS Initialization
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
+    AOS.init({ duration: 1000, once: true });
 
     // Mobile Nav Toggle
-    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-    const navmenu = document.getElementById('navmenu');
-    mobileNavToggle.addEventListener('click', () => {
-      navmenu.classList.toggle('mobile-nav-active');
-      mobileNavToggle.classList.toggle('bi-list');
-      mobileNavToggle.classList.toggle('bi-x');
-      document.body.classList.toggle('mobile-nav-active');
-      const navUl = navmenu.querySelector('ul');
-      navUl.classList.toggle('active');
-    });
+    const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+    const navmenu = document.querySelector('#navmenu ul');
+    if (mobileNavToggleBtn && navmenu) {
+      mobileNavToggleBtn.addEventListener('click', () => {
+        navmenu.classList.toggle('active');
+        mobileNavToggleBtn.classList.toggle('bi-list');
+        mobileNavToggleBtn.classList.toggle('bi-x');
+        document.body.classList.toggle('mobile-nav-active');
+      });
+    }
 
     // Dropdown Toggle for Mobile
-    const dropdowns = document.querySelectorAll('.navmenu .dropdown > a');
-    dropdowns.forEach(dropdown => {
+    document.querySelectorAll('.navmenu .dropdown > a').forEach(dropdown => {
       dropdown.addEventListener('click', (e) => {
         if (window.innerWidth < 1200) {
           e.preventDefault();
           const parent = dropdown.parentElement;
-          const submenu = parent.querySelector('ul');
-          const isActive = parent.classList.contains('active');
-          
-          document.querySelectorAll('.navmenu .dropdown').forEach(item => {
-            if (item !== parent) {
-              item.classList.remove('active');
-              item.querySelector('ul').style.display = 'none';
-            }
-          });
-
           parent.classList.toggle('active');
-          submenu.style.display = isActive ? 'none' : 'block';
         }
       });
     });
 
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.navmenu .dropdown ul').forEach(submenu => {
-        submenu.style.display = 'none';
-      });
-    });
-
-    document.addEventListener('click', (e) => {
-      if (window.innerWidth < 1200 && navmenu.classList.contains('mobile-nav-active')) {
-        if (!navmenu.contains(e.target) && !mobileNavToggle.contains(e.target)) {
-          navmenu.classList.remove('mobile-nav-active');
-          mobileNavToggle.classList.remove('bi-x');
-          mobileNavToggle.classList.add('bi-list');
-          document.body.classList.remove('mobile-nav-active');
-          const navUl = navmenu.querySelector('ul');
-          navUl.classList.remove('active');
-          document.querySelectorAll('.navmenu .dropdown').forEach(dropdown => {
-            dropdown.classList.remove('active');
-            dropdown.querySelector('ul').style.display = 'none';
-          });
-        }
+    // Sticky Header on Scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('#header');
+      if (window.scrollY > 50) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
       }
+    });
+
+    // Translate Button (Placeholder)
+    document.getElementById('translate-wolayta').addEventListener('click', () => {
+      alert('Translation to Wolayta functionality to be implemented!');
     });
 
     // Scroll Top Button
     const scrollTop = document.getElementById('scroll-top');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        scrollTop.classList.add('active');
-      } else {
-        scrollTop.classList.remove('active');
-      }
+      if (window.scrollY > 100) scrollTop.classList.add('active');
+      else scrollTop.classList.remove('active');
     });
-
     scrollTop.addEventListener('click', (e) => {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
