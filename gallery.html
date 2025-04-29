@@ -1,1 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Gallery - Visit Wolayta</title>
+  <meta name="description" content="Explore the vibrant culture, landscapes, and tourism of Wolayta through our curated gallery.">
+  <meta name="keywords" content="Wolayta, Ethiopia, gallery, culture, tourism, landscapes, festivals">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      --heading-font: "Questrial", sans-serif;
+      --nav-font: "Noto Sans", sans-serif;
+      --background-color: #ffffff;
+      --default-color: #0a0f14;
+      --heading-color: #0f2943;
+      --accent-color: #ff5722;
+      --secondary-accent: #d32f2f;
+      --surface-color: #ffffff;
+      --contrast-color: #ffffff;
+      --nav-color: #0a0f14;
+      --nav-hover-color: #ff5722;
+      --nav-mobile-background-color: #ffffff;
+      --nav-dropdown-background-color: #ffffff;
+      --nav-dropdown-color: #0a0f14;
+      --nav-dropdown-hover-color: #ff5722;
+    }
+
+    .light-background { --background-color: #faf9fb; --surface-color: #ffffff; }
+    .dark-background { --background-color: #060606; --default-color: #ffffff; --heading-color: #ffffff; --surface-color: #252525; --contrast-color: #ffffff; }
+    :root { scroll-behavior: smooth; }
+    body { color: var(--default-color); background-color: var(--background-color); font-family: var(--default-font); }
+    a { color: var(--accent-color); text-decoration: none; transition: 0.3s; }
+    a:hover { color: color-mix(in srgb, var(--accent-color), transparent 25%); }
+    h1, h2, h3, h4, h5, h6 { color: var(--heading-color); font-family: var(--heading-font); }
+
+    /* Header */
+    .header { 
+      padding: 20px 0; 
+      transition: all 0.5s; 
+      z-index: 997; 
+      position: fixed; 
+      top: 0; 
+      width: 100%; 
+      background: transparent; 
+    }
+    .header.sticky { 
+      background: rgba(255, 255, 255, 0.95); 
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
+    }
+    .header .header-container { 
+      background: rgba(255, 255, 255, 0.9); 
+      border-radius: 50px; 
+      padding: 5px 25px; 
+      box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1); 
+      max-width: 1200px; 
+      margin: 0 auto; 
+    }
+    .header .logo h1 { font-size: 24px; margin: 0; padding-left: 5px; font-weight: 500; color: var(--heading-color); }
+
+    /* Navigation Menu - Desktop */
+    @media (min-width: 1200px) {
+      .navmenu { padding: 0; }
+      .navmenu ul { margin: 0; padding: 0; display: flex; list-style: none; align-items: center; }
+      .navmenu li { position: relative; }
+      .navmenu a, .navmenu a:focus { 
+        color: var(--nav-color); 
+        padding: 18px 15px; 
+        font-size: 16px; 
+        font-family: var(--nav-font); 
+        font-weight: 400; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        white-space: nowrap; 
+        transition: 0.3s; 
+      }
+      .navmenu a i, .navmenu a:focus i { font-size: 12px; line-height: 0; margin-left: 5px; transition: 0.3s; }
+      .navmenu li:hover>a, .navmenu .active, .navmenu .active:focus { color: var(--nav-hover-color); }
+      .navmenu .dropdown ul { 
+        display: none; 
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        background-color: var(--nav-dropdown-background-color); 
+        padding: 10px 0; 
+        border-radius: 6px; 
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1); 
+      }
+      .navmenu .dropdown:hover > ul { display: block; }
+      .navmenu .dropdown ul li { min-width: 200px; }
+      .navmenu .dropdown ul a { padding: 10px 20px; font-size: 15px; color: var(--nav-dropdown-color); }
+      .navmenu .dropdown ul a:hover { color: var(--nav-dropdown-hover-color); }
+    }
+
+    /* Navigation Menu - Mobile */
+    @media (max-width: 1199px) {
+      .mobile-nav-toggle { 
+        color: var(--nav-color); 
+        font-size: 28px; 
+        line-height: 0; 
+        margin-right: 10px; 
+        cursor: pointer; 
+        transition: color 0.3s; 
+      }
+      .mobile-nav-toggle.bi-x { color: var(--nav-hover-color); }
+      .navmenu { padding: 0; z-index: 9997; }
+      .navmenu ul { 
+        display: none; 
+        list-style: none; 
+        position: fixed; 
+        inset: 60px 0 0 0; 
+        padding: 10px 0; 
+        margin: 0; 
+        background-color: var(--nav-mobile-background-color); 
+        overflow-y: auto; 
+        transition: 0.3s; 
+        z-index: 9998; 
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1); 
+        width: 250px; 
+        height: 100%; 
+        left: -250px; 
+      }
+      .navmenu ul.active { display: block; left: 0; }
+      .navmenu a, .navmenu a:focus { 
+        color: var(--nav-dropdown-color); 
+        padding: 12px 20px; 
+        font-family: var(--nav-font); 
+        font-size: 17px; 
+        font-weight: 500; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        white-space: nowrap; 
+        transition: 0.3s; 
+      }
+      .navmenu a:hover, .navmenu .active, .navmenu .active:focus { 
+        color: var(--nav-dropdown-hover-color); 
+        background-color: #f8f8f8; 
+      }
+      .navmenu .dropdown ul { 
+        display: none; 
+        position: static; 
+        background-color: #f0f0f0; 
+        padding-left: 20px; 
+      }
+      .navmenu .dropdown.active > ul { display: block; }
+      .mobile-nav-active { overflow: hidden; }
+    }
+
+    /* Translate Button */
+    .translate-btn { 
+      background-color: var(--accent-color); 
+      border: none; 
+      padding: 10px; 
+      border-radius: 50%; 
+      width: 40px; 
+      height: 40px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      transition: transform 0.3s, background-color 0.3s; 
+    }
+    .translate-btn i { font-size: 20px; color: #fff; }
+    .translate-btn:hover { 
+      background-color: #ff8a65; 
+      transform: scale(1.1); 
+    }
+
+    /* Portfolio Section */
+    .portfolio { padding: 100px 0 60px; }
+    .portfolio .container { max-width: 1200px; }
+    .portfolio-header { text-align: center; margin-bottom: 40px; }
+    .portfolio-header h1 { font-size: 2.5rem; margin-bottom: 15px; }
+    .portfolio-header p { font-size: 1.1rem; color: #666; }
+    .portfolio-filters { 
+      list-style: none; 
+      padding: 0; 
+      margin-bottom: 30px; 
+      display: flex; 
+      justify-content: center; 
+      gap: 15px; 
+      flex-wrap: wrap; 
+    }
+    .portfolio-filters li { 
+      cursor: pointer; 
+      padding: 10px 20px; 
+      font-size: 1rem; 
+      color: #666; 
+      transition: all 0.3s; 
+      border-radius: 20px; 
+      background: #f5f5f5; 
+      min-width: 80px; 
+      text-align: center; 
+      touch-action: manipulation; 
+    }
+    .portfolio-filters li:hover, .portfolio-filters li.filter-active { 
+      color: #fff; 
+      background: var(--accent-color); 
+    }
+    .portfolio-container { margin-bottom: 40px; }
+    .portfolio-item { padding: 0 15px; }
+    .portfolio-wrap { 
+      position: relative; 
+      overflow: hidden; 
+      border-radius: 10px; 
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+      transition: transform 0.3s; 
+    }
+    .portfolio-wrap:hover { transform: scale(1.05); }
+    .portfolio-wrap img { width: 100%; height: 250px; object-fit: cover; }
+    .portfolio-info { 
+      position: absolute; 
+      bottom: 0; 
+      left: 0; 
+      right: 0; 
+      background: rgba(0, 0, 0, 0.7); 
+      padding: 15px; 
+      color: #fff; 
+      opacity: 0; 
+      transition: opacity 0.3s; 
+    }
+    .portfolio-wrap:hover .portfolio-info { opacity: 1; }
+    .portfolio-info h4 { font-size: 1.2rem; margin: 0; }
+    .portfolio-info h4 a { color: #fff; }
+    .portfolio-info h4 a:hover { color: var(--accent-color); }
+
+    /* Pagination */
+    .pagination { 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      gap: 10px; 
+      margin-top: 30px; 
+    }
+    .pagination a { 
+      padding: 10px 15px; 
+      font-size: 1rem; 
+      color: #fff; 
+      background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent)); 
+      border-radius: 50px; 
+      text-decoration: none; 
+      transition: transform 0.3s, box-shadow 0.3s; 
+      animation: pulse-glow 2s infinite; 
+      min-width: 40px; 
+      text-align: center; 
+    }
+    .pagination a:hover { 
+      transform: scale(1.05); 
+      box-shadow: 0 0 15px rgba(255, 87, 34, 0.5); 
+      background: linear-gradient(45deg, #ff8a65, #e53935); 
+    }
+    .pagination a.active { 
+      background: linear-gradient(45deg, #e53935, #ff8a65); 
+      font-weight: bold; 
+      transform: scale(1.1); 
+    }
+    .pagination a.disabled { 
+      background: #ccc; 
+      cursor: not-allowed; 
+      animation: none; 
+      color: #666; 
+    }
+    @keyframes pulse-glow { 
+      0% { box-shadow: 0 0 5px rgba(255, 87, 34, 0.3); } 
+      50% { box-shadow: 0 0 10px rgba(255, 87, 34, 0.6); } 
+      100% { box-shadow: 0 0 5px rgba(255, 87, 34, 0.3); } 
+    }
+
+    /* Back Link */
+    .back-link { text-align: center; margin-top: 40px; }
+    .back-link a { 
+      display: inline-block; 
+      padding: 10px 20px; 
+      background: linear-gradient(45deg, var(--accent-color), var(--secondary-accent)); 
+      color: #fff; 
+      border-radius: 50px; 
+      font-weight: 600; 
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); 
+      transition: transform 0.3s, box-shadow 0.3s; 
+      animation: pulse-glow 2s infinite; 
+    }
+    .back-link a:hover { 
+      transform: scale(1.05); 
+      box-shadow: 0 0 15px rgba(255, 87, 34, 0.5); 
+      background: linear-gradient(45deg, #ff8a65, #e53935); 
+    }
+
+    /* Footer */
+    .footer { 
+      padding: 20px 0; 
+      background: #f9f9f9; 
+    }
+    .footer .social-links a { 
+      font-size: 18px; 
+      margin: 0 10px; 
+      color: var(--default-color); 
+      transition: color 0.3s; 
+    }
+    .footer .social-links a:hover { 
+      color: var(--accent-color); 
+    }
+
+    /* Mobile Responsive Styles */
+    @media (max-width: 767px) {
+      .portfolio { padding: 60px 0 40px; }
+      .portfolio-header h1 { font-size: 2rem; }
+      .portfolio-filters { 
+        flex-direction: row; 
+        overflow-x: auto; 
+        white-space: nowrap; 
+        padding: 10px 0; 
+        justify-content: flex-start; 
+      }
+      .portfolio-filters li { 
+        display: inline-block; 
+        margin: 5px; 
+        padding: 8px 16px; 
+        font-size: 0.9rem; 
+        min-width: 70px; 
+      }
+      .portfolio-wrap img { height: 200px; }
+      .portfolio-item { margin-bottom: 20px; }
+      .pagination { gap: 5px; }
+      .pagination a { padding: 8px 12px; font-size: 0.9rem; min-width: 35px; }
+    }
+
+    @media (max-width: 576px) {
+      .portfolio-wrap img { height: 180px; }
+      .portfolio-info h4 { font-size: 1rem; }
+      .pagination a { padding: 6px 10px; font-size: 0.8rem; min-width: 30px; }
+    }
+  </style>
+</head>
+
+<body class="gallery-page">
+
+  <!-- Header -->
+  <header id="header" class="header d-flex align-items-center">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <h1 class="sitename">Visit Wolayta</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li class="dropdown">
+            <a href="#">Travel <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="travel-info.html">Travel Information</a></li>
+              <li><a href="booking.html">Booking</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+            </ul>
+          </li>
+          <li><a href="gallery.html" class="active">Gallery</a></li>
+          <li class="dropdown">
+            <a href="#">Wolayta <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="history.html">History</a></li>
+              <li><a href="culture.html">Culture</a></li>
+              <li><a href="tourism.html">Tourism</a></li>
+              <li><a href="agro-forestry.html">Agro-Forestry</a></li>
+              <li><a href="documents.html">Documents & Resources</a></li>
+            </ul>
+          </li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html#donate-us">Donate Us</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <div class="header-social-links">
+        <button id="translate-wolayta" class="translate-btn ms-2" title="Translate to Wolayta">
+          <i class="bi bi-translate"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio sections-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="portfolio-header">
+          <h1>Explore Wolayta Gallery</h1>
+          <p>Discover the beauty of Wolayta through our curated collection of images.</p>
+        </div>
+
+        <!-- Portfolio Filters -->
+        <ul class="portfolio-filters" data-aos="fade-up" data-aos-delay="100">
+          <li data-filter="*" class="filter-active">All</li>
+          <li data-filter=".filter-culture">Culture</li>
+          <li data-filter=".filter-tourism">Tourism</li>
+          <li data-filter=".filter-landscapes">Landscapes</li>
+          <li data-filter=".filter-festivals">Festivals</li>
+        </ul>
+
+        <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order" data-aos="fade-up" data-aos-delay="100">
+          <div class="row gy-4 portfolio-container">
+            <!-- Portfolio Item -->
+            <div class="col-xl-4 col-md-6 portfolio-item filter-culture">
+              <div class="portfolio-wrap">
+                <a href="assets/img/gallery/wolayta-dance.jpg" data-gallery="portfolio-gallery-culture" class="glightbox"><img src="assets/img/gallery/wolayta-dance.jpg" class="img-fluid" alt="Wolayta Traditional Dance"></a>
+                <div class="portfolio-info">
+                  <h4><a href="portfolio-details.html" title="More Details">Wolayta Traditional Dance</a></h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 portfolio-item filter-tourism">
+              <div class="portfolio-wrap">
+                <a href="assets/img/gallery/ajora-falls.jpg" data-gallery="portfolio-gallery-tourism" class="glightbox"><img src="assets/img/gallery/ajora-falls.jpg" class="img-fluid" alt="Ajora Falls"></a>
+                <div class="portfolio-info">
+                  <h4><a href="portfolio-details.html" title="More Details">Ajora Falls</a></h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 portfolio-item filter-landscapes">
+              <div class="portfolio-wrap">
+                <a href="assets/img/gallery/omo-river.jpg" data-gallery="portfolio-gallery-landscapes" class="glightbox"><img src="assets/img/gallery/omo-river.jpg" class="img-fluid" alt="Omo River"></a>
+                <div class="portfolio-info">
+                  <h4><a href="portfolio-details.html" title="More Details">Omo River</a></h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 portfolio-item filter-festivals">
+              <div class="portfolio-wrap">
+                <a href="assets/img/gallery/gifaataa-festival.jpg" data-gallery="portfolio-gallery-festivals" class="glightbox"><img src="assets/img/gallery/gifaataa-festival.jpg" class="img-fluid" alt="Gifaataa Festival"></a>
+                <div class="portfolio-info">
+                  <h4><a href="portfolio-details.html" title="More Details">Gifaataa Festival</a></h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 portfolio-item filter-culture">
+              <div class="portfolio-wrap">
+                <a href="assets/img/gallery/wolayta-dress.jpg" data-gallery="portfolio-gallery-culture" class="glightbox"><img src="assets/img/gallery/wolayta-dress.jpg" class="img-fluid" alt="Wolayta Traditional Dress"></a>
+                <div class="portfolio-info">
+                  <h4><a href="portfolio-details.html" title="More Details">Wolayta Traditional Dress</a></h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 portfolio-item filter-tourism">
+              <div class="portfolio-wrap">
+                <a href="assets/img/gallery/wolaita-sodo-museum.jpg" data-gallery="portfolio-gallery-tourism" class="glightbox"><img src="assets/img/gallery/wolaita-sodo-museum.jpg" class="img-fluid" alt="Wolaita Sodo Museum"></a>
+                <div class="portfolio-info">
+                  <h4><a href="portfolio-details.html" title="More Details">Wolaita Sodo Museum</a></h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 portfolio-item filter-tourism">
+              <div class="portfolio-wrap">
+                <a href="assets/img/gallery/bilbo-hot-springs.jpg" data-gallery="portfolio-gallery-tourism" class="glightbox"><img src="assets/img/gallery/bilbo-hot-springs.jpg" class="img-fluid" alt="Bilbo Hot Springs"></a>
+                <div class="portfolio-info">
+                  <h4><a href="portfolio-details.html" title="More Details">Bilbo Hot Springs</a></h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 portfolio-item filter-landscapes">
+              <div class="portfolio-wrap">
+                <a href="assets/img/gallery/damota-hill.jpg" data-gallery="portfolio-gallery-landscapes" class="glightbox"><img src="assets/img/gallery/damota-hill.jpg" class="img-fluid" alt="Damota Hill"></a>
+                <div class="portfolio-info">
+                  <h4><a href="portfolio-details.html" title="More Details">Damota Hill</a></h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 portfolio-item filter-festivals">
+              <div class="portfolio-wrap">
+                <a href="assets/img/gallery/wolayta-market.jpg" data-gallery="portfolio-gallery-festivals" class="glightbox"><img src="assets/img/gallery/wolayta-market.jpg" class="img-fluid" alt="Local Market Festival"></a>
+                <div class="portfolio-info">
+                  <h4><a href="portfolio-details.html" title="More Details">Local Market Festival</a></h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 portfolio-item filter-culture">
+              <div class="portfolio-wrap">
+                <a href="assets/img/gallery/wolayta-ceremony.jpg" data-gallery="portfolio-gallery-culture" class="glightbox"><img src="assets/img/gallery/wolayta-ceremony.jpg" class="img-fluid" alt="Cultural Ceremony"></a>
+                <div class="portfolio-info">
+                  <h4><a href="portfolio-details.html" title="More Details">Cultural Ceremony</a></h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 portfolio-item filter-tourism">
+              <div class="portfolio-wrap">
+                <a href="assets/img/gallery/wolayta-village.jpg" data-gallery="portfolio-gallery-tourism" class="glightbox"><img src="assets/img/gallery/wolayta-village.jpg" class="img-fluid" alt="Traditional Village"></a>
+                <div class="portfolio-info">
+                  <h4><a href="portfolio-details.html" title="More Details">Traditional Village</a></h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-4 col-md-6 portfolio-item filter-landscapes">
+              <div class="portfolio-wrap">
+                <a href="assets/img/gallery/wolayta-hills.jpg" data-gallery="portfolio-gallery-landscapes" class="glightbox"><img src="assets/img/gallery/wolayta-hills.jpg" class="img-fluid" alt="Wolayta Hills"></a>
+                <div class="portfolio-info">
+                  <h4><a href="portfolio-details.html" title="More Details">Wolayta Hills</a></h4>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Portfolio Container -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" data-aos="fade-up" data-aos-delay="200"></div>
+
+        <!-- Back Link -->
+        <div class="back-link" data-aos="fade-up" data-aos-delay="200">
+          <a href="index.html">Back to Home</a>
+        </div>
+      </div>
+    </section><!-- End Portfolio Section -->
+  </main>
+
+  <!-- Footer -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="copyright text-center">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">Visit Wolayta</strong> <span>All Rights Reserved</span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="#" class="telegram"><i class="bi bi-telegram"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/js/glightbox.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/isotope-layout@3.0.6/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    // AOS Initialization
+    AOS.init({ duration: 1000, once: true });
+
+    // GLightbox Initialization
+    const lightbox = GLightbox({
+      selector: '.glightbox'
+    });
+
+    // Isotope and Pagination
+    document.addEventListener('DOMContentLoaded', () => {
+      const portfolioContainer = document.querySelector('.portfolio-container');
+      const paginationContainer = document.querySelector('.pagination');
+      const itemsPerPage = 6;
+      let currentPage = 1;
+      let currentFilter = '*';
+      let isotope;
+
+      // Initialize Isotope
+      isotope = new Isotope(portfolioContainer, {
+        itemSelector: '.portfolio-item',
+        layoutMode: 'masonry',
+        filter: '*'
+      });
+
+      // Get all portfolio items
+      const portfolioItems = Array.from(document.querySelectorAll('.portfolio-item'));
+
+      // Function to update pagination
+      function updatePagination(filteredItems) {
+        const totalItems = filteredItems.length;
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        paginationContainer.innerHTML = '';
+
+        // Previous button
+        const prevButton = document.createElement('a');
+        prevButton.textContent = 'Previous';
+        prevButton.classList.add(currentPage === 1 ? 'disabled' : '');
+        prevButton.addEventListener('click', () => {
+          if (currentPage > 1) {
+            currentPage--;
+            updateGallery();
+          }
+        });
+        paginationContainer.appendChild(prevButton);
+
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+          const pageButton = document.createElement('a');
+          pageButton.textContent = i;
+          pageButton.classList.add(i === currentPage ? 'active' : '');
+          pageButton.addEventListener('click', () => {
+            currentPage = i;
+            updateGallery();
+          });
+          paginationContainer.appendChild(pageButton);
+        }
+
+        // Next button
+        const nextButton = document.createElement('a');
+        nextButton.textContent = 'Next';
+        nextButton.classList.add(currentPage === totalPages ? 'disabled' : '');
+        nextButton.addEventListener('click', () => {
+          if (currentPage < totalPages) {
+            currentPage++;
+            updateGallery();
+          }
+        });
+        paginationContainer.appendChild(nextButton);
+      }
+
+      // Function to update gallery display
+      function updateGallery() {
+        // Apply Isotope filter
+        isotope.arrange({ filter: currentFilter });
+
+        // Get filtered items
+        const filteredItems = isotope.getFilteredItemElements();
+
+        // Hide all items
+        portfolioItems.forEach(item => item.style.display = 'none');
+
+        // Calculate items to show for current page
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const itemsToShow = filteredItems.slice(start, end);
+
+        // Show only items for current page
+        itemsToShow.forEach(item => item.style.display = '');
+
+        // Update pagination
+        updatePagination(filteredItems);
+
+        // Re-layout Isotope
+        isotope.layout();
+      }
+
+      // Filter buttons
+      const portfolioFilters = document.querySelectorAll('.portfolio-filters li');
+      portfolioFilters.forEach(filter => {
+        filter.addEventListener('click', function () {
+          portfolioFilters.forEach(el => el.classList.remove('filter-active'));
+          this.classList.add('filter-active');
+
+          currentFilter = this.getAttribute('data-filter');
+          currentPage = 1; // Reset to first page on filter change
+          updateGallery();
+        });
+      });
+
+      // Initial gallery setup
+      updateGallery();
+    });
+
+    // Mobile Nav Toggle
+    const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+    const navmenu = document.querySelector('#navmenu ul');
+    if (mobileNavToggleBtn && navmenu) {
+      mobileNavToggleBtn.addEventListener('click', () => {
+        navmenu.classList.toggle('active');
+        mobileNavToggleBtn.classList.toggle('bi-list');
+        mobileNavToggleBtn.classList.toggle('bi-x');
+        document.body.classList.toggle('mobile-nav-active');
+      });
+    }
+
+    // Dropdown Toggle for Mobile
+    document.querySelectorAll('.navmenu .dropdown > a').forEach(dropdown => {
+      dropdown.addEventListener('click', (e) => {
+        if (window.innerWidth < 1200) {
+          e.preventDefault();
+          const parent = dropdown.parentElement;
+          parent.classList.toggle('active');
+        }
+      });
+    });
+
+    // Sticky Header on Scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('#header');
+      if (window.scrollY > 50) {
+        header.classList.add('sticky');
+      } else {
+        header.classList.remove('sticky');
+      }
+    });
+
+    // Translate Button (Placeholder)
+    document.getElementById('translate-wolayta').addEventListener('click', () => {
+      alert('Translation to Wolayta functionality to be implemented!');
+    });
+
+    // Scroll Top Button
+    const scrollTop = document.getElementById('scroll-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) scrollTop.classList.add('active');
+      else scrollTop.classList.remove('active');
+    });
+    scrollTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+
+</html>
