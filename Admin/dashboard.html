@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Admin Dashboard - Visit Wolayta</title>
+  <meta name="description" content="Manage content and analytics for Visit Wolayta efficiently with the Admin Dashboard.">
+  <meta name="keywords" content="admin dashboard, visit wolayta, tourism, content management">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Questrial:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Chart.js for visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      --heading-font: "Questrial", sans-serif;
+      --nav-font: "Noto Sans", sans-serif;
+      --background-color: #ffffff;
+      --default-color: #0a0f14;
+      --heading-color: #0f2943;
+      --accent-color: #ff5722;
+      --secondary-accent: #d32f2f;
+      --surface-color: #ffffff;
+      --contrast-color: #ffffff;
+      --nav-color: #0a0f14;
+      --nav-hover-color: #ff5722;
+      --nav-mobile-background-color: #ffffff;
+      --nav-dropdown-background-color: #ffffff;
+      --nav-dropdown-color: #0a0f14;
+      --nav-dropdown-hover-color: #ff5722;
+      --transition-speed: 0.3s;
+    }
+
+    .light-mode {
+      --background-color: #faf9fb;
+      --surface-color: #ffffff;
+      --default-color: #0a0f14;
+      --heading-color: #0f2943;
+      --contrast-color: #ffffff;
+    }
+
+    .dark-mode {
+      --background-color: #1a1c23;
+      --surface-color: #252a34;
+      --default-color: #e0e0e0;
+      --heading-color: #ffffff;
+      --contrast-color: #e0e0e0;
+      --nav-color: #e0e0e0;
+      --nav-mobile-background-color: #252a34;
+      --nav-dropdown-background-color: #252a34;
+      --nav-dropdown-color: #e0e0e0;
+    }
+
+    body {
+      color: var(--default-color);
+      background-color: var(--background-color);
+      font-family: var(--default-font);
+      transition: all var(--transition-speed) ease;
+    }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      color: color-mix(in srgb, var(--accent-color), transparent 25%);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--heading-color);
+      font-family: var(--heading-font);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-accent) 100%);
+      color: var(--contrast-color);
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      transition: width var(--transition-speed) ease;
+    }
+
+    .sidebar .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar .logo i {
+      font-size: 2rem;
+      margin-right: 10px;
+    }
+
+    .sidebar .logo h3 {
+      font-size: 24px;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .sidebar .nav-link {
+      color: var(--contrast-color);
+      padding: 12px 20px;
+      margin: 6px 0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      transition: all var(--transition-speed);
+      font-family: var(--nav-font);
+    }
+
+    .sidebar .nav-link i {
+      margin-right: 10px;
+    }
+
+    .sidebar .nav-link:hover,
+    .sidebar .nav-link.active {
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--contrast-color);
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 260px;
+      padding: 30px;
+      background: var(--background-color);
+      min-height: 100vh;
+      transition: margin-left var(--transition-speed) ease;
+    }
+
+    .header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .header-bar h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .search-bar .form-control {
+      border-radius: 50px;
+      border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
+      padding: 0.75rem 1.5rem;
+      background-color: var(--surface-color);
+      color: var(--default-color);
+      transition: all var(--transition-speed);
+    }
+
+    .search-bar .form-control:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 5px rgba(255, 87, 34, 0.5);
+    }
+
+    .profile-image {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--default-color);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform var(--transition-speed);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* Stat Cards */
+    .stat-card {
+      background: var(--surface-color);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+      transition: all var(--transition-speed) ease;
+      animation: slideUp 0.5s ease-out;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-card h6 {
+      font-size: 0.875rem;
+      color: var(--accent-color);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .stat-card h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .stat-card p {
+      font-size: 0.9rem;
+      color: color-mix(in srgb, var(--default-color), transparent 30%);
+    }
+
+    .stat-card p i {
+      color: var(--accent-color);
+      margin-right: 5px;
+    }
+
+    /* System Progress Container */
+    .system-progress-container {
+      background: var(--surface-color);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+      animation: slideUp 0.5s ease-out;
+    }
+
+    .progress-bar-container {
+      height: 20px;
+      background: color-mix(in srgb, var(--default-color), transparent 90%);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--accent-color);
+      transition: width 1s ease-in-out;
+    }
+
+    /* Table Styling */
+    .table-container .card {
+      padding: 0;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.5s ease-in;
+      background: var(--surface-color);
+    }
+
+    .table-container .card-header {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--surface-color);
+      border-bottom: 2px solid color-mix(in srgb, var(--default-color), transparent 80%);
+    }
+
+    .table-container .btn-primary {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+      color: var(--contrast-color);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      transition: all var(--transition-speed) ease;
+    }
+
+    .table-container .btn-primary:hover {
+      background-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+      border-color: color-mix(in srgb, var(--accent-color), transparent 15%);
+    }
+
+    .table-container .table th {
+      font-family: var(--nav-font);
+      font-weight: 600;
+      color: var(--heading-color);
+    }
+
+    .table-container .table td {
+      vertical-align: middle;
+      color: var(--default-color);
+    }
+
+    .table-container .progress {
+      height: 8px;
+      border-radius: 4px;
+      background: color-mix(in srgb, var(--default-color), transparent 90%);
+    }
+
+    .table-container .progress-bar {
+      background: var(--accent-color);
+      transition: width 1s ease-in-out;
+    }
+
+    .table-container .badge {
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 500;
+    }
+
+    /* Chart Container */
+    .chart-container {
+      background: var(--surface-color);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+      animation: slideUp 0.5s ease-out;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 80px;
+      }
+
+      .sidebar .logo h3,
+      .sidebar .nav-link span {
+        display: none;
+      }
+
+      .sidebar .nav-link i {
+        margin-right: 0;
+        font-size: 1.5rem;
+      }
+
+      .main-content {
+        margin-left: 80px;
+      }
+
+      .header-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .stat-card {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body class="light-mode">
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <i class="bi bi-globe"></i>
+      <h3>Visit Wolayta Admin</h3>
+    </div>
+    <nav class="nav flex-column">
+      <a class="nav-link active" href="#overview"><i class="bi bi-house-door"></i><span>Overview</span></a>
+      <a class="nav-link" href="#destinations"><i class="bi bi-geo-alt"></i><span>Destinations</span></a>
+      <a class="nav-link" href="#gallery"><i class="bi bi-image"></i><span>Gallery</span></a>
+      <a class="nav-link" href="#events"><i class="bi bi-calendar-event"></i><span>Events</span></a>
+      <a class="nav-link" href="#inquiries"><i class="bi bi-chat"></i><span>Inquiries</span></a>
+      <a class="nav-link" href="#analytics"><i class="bi bi-graph-up"></i><span>Analytics</span></a>
+      <a class="nav-link" href="#settings"><i class="bi bi-gear"></i><span>Settings</span></a>
+      <a class="nav-link" href="#logout"><i class="bi bi-box-arrow-right"></i><span>Logout</span></a>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Header Bar -->
+    <div class="header-bar">
+      <h2>Admin Dashboard</h2>
+      <div class="d-flex align-items-center gap-3">
+        <div class="search-bar">
+          <input type="text" class="form-control" placeholder="Search content..." id="searchInput">
+        </div>
+        <button class="btn btn-outline-secondary position-relative" type="button" id="notificationBtn">
+          <i class="bi bi-bell"></i>
+          <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">3</span>
+        </button>
+        <button class="theme-toggle" id="themeToggle"><i class="bi bi-moon-stars"></i></button>
+        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+             alt="Profile" class="profile-image" data-bs-toggle="tooltip" title="Profile">
+      </div>
+    </div>
+
+    <!-- Stat Cards -->
+    <div class="row g-4 mb-4" id="statCards">
+      <div class="col-md-3">
+        <div class="stat-card">
+          <h6>Total Destinations</h6>
+          <h2 id="totalDestinations">12</h2>
+          <p><i class="bi bi-arrow-up"></i> 2 new this month</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-card">
+          <h6>Gallery Images</h6>
+          <h2 id="galleryImages">45</h2>
+          <p><i class="bi bi-arrow-up"></i> 10% increase</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-card">
+          <h6>Active Events</h6>
+          <h2 id="activeEvents">8</h2>
+          <p><i class="bi bi-arrow-up"></i> 3 upcoming</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="stat-card">
+          <h6>Inquiries</h6>
+          <h2 id="inquiriesCount">25</h2>
+          <p><i class="bi bi-arrow-up"></i> 5 new today</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- System Progress -->
+    <div class="row g-4 mb-4">
+      <div class="col-12">
+        <div class="system-progress-container">
+          <h5>System Progress</h5>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <h6>Server Storage (100GB Total)</h6>
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="storageBar" style="width: 0%"></div>
+                </div>
+                <p class="mt-2"><span id="storageUsed">0 GB</span> used / <span id="storageRemaining">100 GB</span> remaining</p>
+              </div>
+              <div class="mb-3">
+                <h6>Bandwidth Usage (500GB Monthly)</h6>
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="bandwidthBar" style="width: 0%"></div>
+                </div>
+                <p class="mt-2"><span id="bandwidthUsed">0 GB</span> used this month</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <h6>Processor Usage</h6>
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="processorBar" style="width: 0%"></div>
+                </div>
+                <p class="mt-2"><span id="processorUsage">0%</span> current usage</p>
+              </div>
+              <div class="mb-3">
+                <h6>Database Storage (50GB Total)</h6>
+                <div class="progress-bar-container">
+                  <div class="progress-bar-fill" id="dbStorageBar" style="width: 0%"></div>
+                </div>
+                <p class="mt-2"><span id="dbStorageUsed">0 GB</span> used / <span id="dbStorageRemaining">50 GB</span> remaining</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h6>Website Traffic (Daily)</h6>
+            <canvas id="trafficChart" height="100"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="row g-4 mb-4">
+      <div class="col-12">
+        <div class="chart-container">
+          <h5>Visitor Engagement Trends</h5>
+          <canvas id="engagementChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tables -->
+    <div class="row g-4 table-container mb-4">
+      <!-- Destinations Table -->
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>Destinations Overview</h5>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addDestinationModal">Add New Destination</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover" id="destinationsTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Category</th>
+                  <th>Views</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery Table -->
+    <div class="row g-4 table-container">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>Gallery Images Overview</h5>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addImageModal">Add New Image</button>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover" id="galleryTable">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Title</th>
+                  <th>Category</th>
+                  <th>Views</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal fade" id="addDestinationModal" tabindex="-1" aria-labelledby="addDestinationModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background: var(--surface-color); color: var(--default-color);">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addDestinationModalLabel">Add New Destination</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="addDestinationForm">
+              <div class="mb-3">
+                <label for="destinationId" class="form-label">Destination ID</label>
+                <input type="text" class="form-control" id="destinationId" required>
+              </div>
+              <div class="mb-3">
+                <label for="destinationName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="destinationName" required>
+              </div>
+              <div class="mb-3">
+                <label for="destinationCategory" class="form-label">Category</label>
+                <select class="form-control" id="destinationCategory" required>
+                  <option value="Natural">Natural</option>
+                  <option value="Cultural">Cultural</option>
+                  <option value="Historical">Historical</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="destinationImage" class="form-label">Image URL</label>
+                <input type="text" class="form-control" id="destinationImage" required>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" form="addDestinationForm" class="btn btn-primary">Add Destination</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Image Modal -->
+    <div class="modal fade" id="addImageModal" tabindex="-1" aria-labelledby="addImageModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background: var(--surface-color); color: var(--default-color);">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addImageModalLabel">Add New Gallery Image</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="addImageForm">
+              <div class="mb-3">
+                <label for="imageId" class="form-label">Image ID</label>
+                <input type="text" class="form-control" id="imageId" required>
+              </div>
+              <div class="mb-3">
+                <label for="imageTitle" class="form-label">Title</label>
+                <input type="text" class="form-control" id="imageTitle" required>
+              </div>
+              <div class="mb-3">
+                <label for="imageCategory" class="form-label">Category</label>
+                <select class="form-control" id="imageCategory" required>
+                  <option value="Culture">Culture</option>
+                  <option value="Tourism">Tourism</option>
+                  <option value="Landscapes">Landscapes</option>
+                  <option value="Festivals">Festivals</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="imageUrl" class="form-label">Image URL</label>
+                <input type="text" class="form-control" id="imageUrl" required>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" form="addImageForm" class="btn btn-primary">Add Image</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script>
+    // Sample data
+    let destinations = [
+      { id: "DEST001", name: "Ajora Falls", category: "Natural", views: 1200, status: "Published" },
+      { id: "DEST002", name: "Wolaita Sodo Museum", category: "Cultural", views: 850, status: "Published" }
+    ];
+
+    let galleryImages = [
+      { id: "IMG001", title: "Wolayta Traditional Dance", category: "Culture", views: 500, status: "Published" },
+      { id: "IMG002", title: "Ajora Falls", category: "Tourism", views: 750, status: "Published" }
+    ];
+
+    // System Progress Data (Sample values)
+    const systemStats = {
+      storageTotal: 100, // GB
+      storageUsed: 65,   // GB
+      bandwidthTotal: 500, // GB
+      bandwidthUsed: 350,  // GB
+      processorUsage: 45,  // %
+      dbStorageTotal: 50,  // GB
+      dbStorageUsed: 30    // GB
+    };
+
+    // Traffic Data (Sample daily values in visitors)
+    const trafficData = {
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      values: [200, 250, 180, 300, 350, 150, 100] // Visitors
+    };
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      document.body.classList.toggle('light-mode');
+      themeToggle.innerHTML = document.body.classList.contains('dark-mode') 
+        ? '<i class="bi bi-sun"></i>' 
+        : '<i class="bi bi-moon-stars"></i>';
+      
+      // Update chart colors for theme change
+      engagementChart.data.datasets[0].borderColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim();
+      engagementChart.data.datasets[0].backgroundColor = 'rgba(255, 87, 34, 0.2)';
+      engagementChart.update();
+      trafficChart.data.datasets[0].borderColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim();
+      trafficChart.data.datasets[0].backgroundColor = 'rgba(255, 87, 34, 0.2)';
+      trafficChart.update();
+    });
+
+    // Render Tables
+    function renderDestinations(filter = '') {
+      const tbody = document.querySelector('#destinationsTable tbody');
+      tbody.innerHTML = '';
+      destinations.filter(d => 
+        d.id.toLowerCase().includes(filter.toLowerCase()) || 
+        d.name.toLowerCase().includes(filter.toLowerCase())
+      ).forEach(destination => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${destination.id}</td>
+          <td>${destination.name}</td>
+          <td>${destination.category}</td>
+          <td>${destination.views}</td>
+          <td><span class="badge bg-success">${destination.status}</span></td>
+          <td><button class="btn btn-sm btn-outline-danger" onclick="deleteDestination('${destination.id}')"><i class="bi bi-trash"></i></button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+      updateStats();
+    }
+
+    function renderGalleryImages(filter = '') {
+      const tbody = document.querySelector('#galleryTable tbody');
+      tbody.innerHTML = '';
+      galleryImages.filter(i => 
+        i.id.toLowerCase().includes(filter.toLowerCase()) || 
+        i.title.toLowerCase().includes(filter.toLowerCase())
+      ).forEach(image => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${image.id}</td>
+          <td>${image.title}</td>
+          <td>${image.category}</td>
+          <td>${image.views}</td>
+          <td><span class="badge bg-success">${image.status}</span></td>
+          <td><button class="btn btn-sm btn-outline-danger" onclick="deleteImage('${image.id}')"><i class="bi bi-trash"></i></button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+      updateStats();
+    }
+
+    // Update Stats
+    function updateStats() {
+      document.getElementById('totalDestinations').textContent = destinations.length;
+      document.getElementById('galleryImages').textContent = galleryImages.length;
+      document.getElementById('activeEvents').textContent = "8"; // Static for demo
+      document.getElementById('inquiriesCount').textContent = "25"; // Static for demo
+    }
+
+    // Update System Progress
+    function updateSystemProgress() {
+      // Server Storage
+      const storagePercent = (systemStats.storageUsed / systemStats.storageTotal) * 100;
+      document.getElementById('storageBar').style.width = `${storagePercent}%`;
+      document.getElementById('storageUsed').textContent = `${systemStats.storageUsed} GB`;
+      document.getElementById('storageRemaining').textContent = `${systemStats.storageTotal - systemStats.storageUsed} GB`;
+
+      // Bandwidth Usage
+      const bandwidthPercent = (systemStats.bandwidthUsed / systemStats.bandwidthTotal) * 100;
+      document.getElementById('bandwidthBar').style.width = `${bandwidthPercent}%`;
+      document.getElementById('bandwidthUsed').textContent = `${systemStats.bandwidthUsed} GB`;
+
+      // Processor Usage
+      document.getElementById('processorBar').style.width = `${systemStats.processorUsage}%`;
+      document.getElementById('processorUsage').textContent = `${systemStats.processorUsage}%`;
+
+      // Database Storage
+      const dbPercent = (systemStats.dbStorageUsed / systemStats.dbStorageTotal) * 100;
+      document.getElementById('dbStorageBar').style.width = `${dbPercent}%`;
+      document.getElementById('dbStorageUsed').textContent = `${systemStats.dbStorageUsed} GB`;
+      document.getElementById('dbStorageRemaining').textContent = `${systemStats.dbStorageTotal - systemStats.dbStorageUsed} GB`;
+    }
+
+    // Search Functionality
+    document.getElementById('searchInput').addEventListener('input', function() {
+      renderDestinations(this.value);
+      renderGalleryImages(this.value);
+    });
+
+    // Add Destination
+    document.getElementById('addDestinationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newDestination = {
+        id: document.getElementById('destinationId').value,
+        name: document.getElementById('destinationName').value,
+        category: document.getElementById('destinationCategory').value,
+        views: 0,
+        status: "Published"
+      };
+      destinations.push(newDestination);
+      renderDestinations();
+      bootstrap.Modal.getInstance(document.getElementById('addDestinationModal')).hide();
+      this.reset();
+    });
+
+    // Add Image
+    document.getElementById('addImageForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newImage = {
+        id: document.getElementById('imageId').value,
+        title: document.getElementById('imageTitle').value,
+        category: document.getElementById('imageCategory').value,
+        views: 0,
+        status: "Published"
+      };
+      galleryImages.push(newImage);
+      renderGalleryImages();
+      bootstrap.Modal.getInstance(document.getElementById('addImageModal')).hide();
+      this.reset();
+    });
+
+    // Delete Functions
+    function deleteDestination(id) {
+      if (confirm('Are you sure you want to delete this destination?')) {
+        destinations = destinations.filter(d => d.id !== id);
+        renderDestinations();
+      }
+    }
+
+    function deleteImage(id) {
+      if (confirm('Are you sure you want to delete this image?')) {
+        galleryImages = galleryImages.filter(i => i.id !== id);
+        renderGalleryImages();
+      }
+    }
+
+    // Chart Initialization - Engagement
+    const ctx = document.getElementById('engagementChart').getContext('2d');
+    const engagementChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+        datasets: [{
+          label: 'Page Views',
+          data: [5000, 6000, 5500, 7000, 8000],
+          borderColor: getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim(),
+          backgroundColor: 'rgba(255, 87, 34, 0.2)',
+          tension: 0.4,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+          },
+          x: { grid: { color: 'rgba(255, 255, 255, 0.1)' } }
+        },
+        plugins: {
+          legend: {
+            labels: { color: getComputedStyle(document.documentElement).getPropertyValue('--default-color').trim() }
+          }
+        }
+      }
+    });
+
+    // Chart Initialization - Traffic
+    const trafficCtx = document.getElementById('trafficChart').getContext('2d');
+    const trafficChart = new Chart(trafficCtx, {
+      type: 'bar',
+      data: {
+        labels: trafficData.labels,
+        datasets: [{
+          label: 'Daily Visitors',
+          data: trafficData.values,
+          borderColor: getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim(),
+          backgroundColor: 'rgba(255, 87, 34, 0.2)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+          },
+          x: { grid: { color: 'rgba(255, 255, 255, 0.1)' } }
+        },
+        plugins: {
+          legend: {
+            labels: { color: getComputedStyle(document.documentElement).getPropertyValue('--default-color').trim() }
+          }
+        }
+      }
+    });
+
+    // Tooltips
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+    // Initial Render
+    renderDestinations();
+    renderGalleryImages();
+    updateSystemProgress();
+  </script>
+</body>
+
+</html>
